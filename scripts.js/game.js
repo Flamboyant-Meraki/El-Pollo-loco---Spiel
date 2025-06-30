@@ -25,8 +25,6 @@ window.addEventListener('keydown', (event) => {
     if(event.keyCode == 69) {
         keyboard.E = true;
     }
-    console.log(event);
-
 });
 
 window.addEventListener('keyup', (event) => {
@@ -45,6 +43,4 @@ window.addEventListener('keyup', (event) => {
     if(event.keyCode == 69) {
         keyboard.E = false;
     }
-    console.log(event);
-
 });
