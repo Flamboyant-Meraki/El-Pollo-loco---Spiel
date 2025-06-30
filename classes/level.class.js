@@ -1,11 +1,12 @@
 class Level {
     enemies;
     clouds;
-    backgroundobjects;
+    backgroundObjects;
+    level_end_x = 1500;
 
-    constructor(enemies, clouds, backgroundobjects){
+    constructor(enemies, clouds, backgroundObjects){
         this.enemies = enemies;
         this.clouds = clouds;
-        this.backgroundobjects = backgroundobjects;
+        this.backgroundObjects = backgroundObjects;
     }
 }
