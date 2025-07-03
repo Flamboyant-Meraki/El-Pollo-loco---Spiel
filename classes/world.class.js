@@ -5,6 +5,7 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
+    statusbar = new StatusBar();
 
     constructor(canvas, keyboard){
         this.level = level1;
@@ -25,7 +26,7 @@ class World {
             this.level.enemies.forEach( (enemy) => {
                 if (this.character.isColliding(enemy)) {
                     console.log('Collision with Character', enemy);
-                    this.character.energy -= 10;
+                    this.character.hit();
                     console.log('energy los', this.character.energy)
                 }
             });
@@ -38,6 +39,7 @@ class World {
 
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
+        this.addToMap(this.statusbar);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
         this.ctx.translate(-this.camera_x, 0);
