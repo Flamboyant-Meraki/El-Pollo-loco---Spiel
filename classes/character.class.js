@@ -20,6 +20,16 @@ class Character extends MovableObject {
     'assets/img/2_character_pepe/3_jump/J-39.png'
   ];
 
+  images_dying = [
+    'assets/img/2_character_pepe/5_dead/D-51.png',
+    'assets/img/2_character_pepe/5_dead/D-52.png',
+    'assets/img/2_character_pepe/5_dead/D-53.png',
+    'assets/img/2_character_pepe/5_dead/D-54.png',
+    'assets/img/2_character_pepe/5_dead/D-55.png',
+    'assets/img/2_character_pepe/5_dead/D-56.png',
+    'assets/img/2_character_pepe/5_dead/D-57.png'
+  ];
+
   y = 180; 
   currentImage = 0;
   world;
@@ -29,6 +39,7 @@ class Character extends MovableObject {
     super().loadImage("assets/img/2_character_pepe/2_walk/W-21.png");
     this.loadImages(this.images_walking);
     this.loadImages(this.images_jumping);
+    this.loadImages(this.images_dying);
     this.applyGravity();
     this.animate();
   }
@@ -55,7 +66,9 @@ class Character extends MovableObject {
     }, 1000 / 60);
 
     setInterval(() => {
-      if (this.isAboveGround()) {
+      if (this.isDead()) {
+        this.playAnimation(this.images_dying);
+      } else if (this.isAboveGround()) {
           this.playAnimation(this.images_jumping);
       } else {
         if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
