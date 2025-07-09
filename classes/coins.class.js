@@ -37,14 +37,4 @@ class Coin extends DrawableObject {
             this.y < other.y + other.height &&
             this.y + this.height > other.y;
     }
-
-    // floatAnimation(){
-    //     this.floatAmplitude = 10 + Math.random() * 5;
-    //     this.floatSpeed = 0.03 + Math.random() * 0.02;
-    //     this.floatPhase = Math.random() * Math.PI * 2;
-    // }
-
-    // updateFloatPosition(time) {
-    //     this.y = this.baseY + Math.sin(time * this.floatSpeed + this.floatPhase) * this.floatAmplitude;
-    // }
 }
