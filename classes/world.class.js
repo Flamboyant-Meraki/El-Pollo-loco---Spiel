@@ -29,7 +29,7 @@ class World {
                 if (this.character.isColliding(enemy)) {
                     this.character.hit();
                     this.statusbar.setPercentage(this.character.energy);
-                    this.statusbar.setPercentage(this.character.coins);
+                    this.statusbar.setPercentage(this.character.objects);
                     this.statusbar.setPercentage(this.character.bottles);
                 }
             });
@@ -44,6 +44,7 @@ class World {
 
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.coins);
+        this.addObjectsToMap(this.level.bottles);
 
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.statusbar);
