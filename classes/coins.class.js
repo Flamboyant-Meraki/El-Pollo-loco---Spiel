@@ -5,11 +5,11 @@ class Coin extends DrawableObject {
     constructor() {
         super().loadImage('assets/img/8_coin/coin_2.png');
         
-        this.width = 200;
-        this.height = 200;
+        this.width = 150;
+        this.height = 150;
 
         this.randomPlaced();
-        this.floatAnimation();
+        // this.floatAnimation();
     }
 
     randomPlaced(){
@@ -38,13 +38,13 @@ class Coin extends DrawableObject {
             this.y + this.height > other.y;
     }
 
-    floatAnimation(){
-        this.floatAmplitude = 10 + Math.random() * 5;
-        this.floatSpeed = 0.03 + Math.random() * 0.02;
-        this.floatPhase = Math.random() * Math.PI * 2;
-    }
+    // floatAnimation(){
+    //     this.floatAmplitude = 10 + Math.random() * 5;
+    //     this.floatSpeed = 0.03 + Math.random() * 0.02;
+    //     this.floatPhase = Math.random() * Math.PI * 2;
+    // }
 
-    updateFloatPosition(time) {
-        this.y = this.baseY + Math.sin(time * this.floatSpeed + this.floatPhase) * this.floatAmplitude;
-    }
+    // updateFloatPosition(time) {
+    //     this.y = this.baseY + Math.sin(time * this.floatSpeed + this.floatPhase) * this.floatAmplitude;
+    // }
 }
