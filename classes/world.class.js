@@ -36,8 +36,16 @@ class World {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusbar.setPercentage(this.character.energy);
-                this.statusbar.setPercentage(this.character.objects);
-                this.statusbar.setPercentage(this.character.bottles);
+            }
+        });
+        this.level.coins.forEach( (coin) => {
+            if (this.character.isColliding(coin)) {
+                this.character.collectCoin();
+                this.statusbarCoins.setPercentage(this.character.coins);
+                const index = this.level.coins.indexOf(coin);
+                if (index > -1) {
+                    this.level.coins.splice(index, 1);
+                }
             }
         });
     }

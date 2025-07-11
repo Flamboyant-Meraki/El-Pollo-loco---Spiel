@@ -5,6 +5,10 @@ class MovableObject extends DrawableObject {
     acceleration = 2.5;
     energy = 100;
     lastHit = 0;
+    coins = 0;
+    lastCoin = 0;
+    bottle = 0;
+    lastBottle = 0;
 
 
     applyGravity(){
@@ -51,10 +55,10 @@ class MovableObject extends DrawableObject {
     }
 
     isColliding(mo){
-        return this.x + this.width > mo.x &&
-            this.y + this.height > mo.y &&
-            this.x < mo.x &&
-            this.y < mo.y + mo.height;
+        return this.x < mo.x + mo.width &&
+           this.x + this.width > mo.x &&
+           this.y < mo.y + mo.height &&
+           this.y + this.height > mo.y;
     }
 
     hit(){
@@ -69,10 +73,41 @@ class MovableObject extends DrawableObject {
     isHurt(){
         let timepassed = new Date().getTime() - this.lastHit;
         timepassed = timepassed / 1000;
-        return timepassed < 1;
+        return timepassed < 1 ;
     }
 
     isDead(){
         return this.energy == 0;
     }
+
+    collectCoin(){
+        this.coins += 20;
+        if (this.coins < 0) {
+            this.coins = 0;
+        } else {
+            this.lastCoin = new Date().getTime();
+        }
+    }
+
+    collectedCoin(){
+        let timepassed = new Date().getTime() - this.lastCoin;
+        timepassed = timepassed / 1000;
+        return timepassed > 1;
+    }    
+
+    collectBottle(){
+        this.bottle += 20;
+        if (this.bottle < 0) {
+            this.bottle = 0;
+        } else {
+            this.lastBottle = new Date().getTime();
+        }
+    }
+
+    collectedBottle(){
+        let timepassed = new Date().getTime() - this.lastBottle;
+        timepassed = timepassed / 1000;
+        return timepassed > 1;
+    }    
+    
 }
