@@ -48,6 +48,16 @@ class World {
                 }
             }
         });
+        this.level.bottles.forEach( (bottle) => {
+            if (this.character.isColliding(bottle)) {
+                this.character.collectBottle();
+                this.statusbarBottle.setPercentage(this.character.bottle);
+                const index = this.level.bottles.indexOf(bottle);
+                if (index > -1) {
+                    this.level.bottles.splice(index, 1);
+                }
+            }
+        });
     }
 
     checkThrownBottle(){
