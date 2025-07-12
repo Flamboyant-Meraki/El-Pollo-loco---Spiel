@@ -9,6 +9,7 @@ class World {
     statusbarCoins = new StatusBarCoins();
     statusbarBottle = new StatusBarBottles();
     throwBottle = [new ThrowBottle()];
+    canThrow = true;
 
     constructor(canvas, keyboard){
         this.level = level1;
@@ -28,16 +29,25 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrownBottle();
-        }, 200);
+        }, 60);
     }
 
     checkCollisions(){
+        this.collideWithEnemy();
+        this.collideWithCoin();
+        this.collideWithBottle();
+    }
+
+    collideWithEnemy(){
         this.level.enemies.forEach( (enemy) => {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusbar.setPercentage(this.character.energy);
             }
         });
+    }
+
+    collideWithCoin(){
         this.level.coins.forEach( (coin) => {
             if (this.character.isColliding(coin)) {
                 this.character.collectCoin();
@@ -48,6 +58,9 @@ class World {
                 }
             }
         });
+    }
+
+    collideWithBottle(){
         this.level.bottles.forEach( (bottle) => {
             if (this.character.isColliding(bottle)) {
                 this.character.collectBottle();
@@ -60,10 +73,15 @@ class World {
         });
     }
 
-    checkThrownBottle(){
-        if (this.keyboard.E) {
+    checkThrownBottle() {
+        if (this.keyboard.E && this.canThrow) {
             let bottle = new ThrowBottle(this.character.x, this.character.y);
             this.throwBottle.push(bottle);
+            this.canThrow = false;
+
+            setTimeout(() => {
+                this.canThrow = true;
+            }, 200); 
         }
     }
     
