@@ -10,6 +10,7 @@ class World {
     statusbarBottle = new StatusBarBottles();
     throwBottle = [new ThrowBottle()];
     canThrow = false;
+    cooldownReady = true;
 
     constructor(canvas, keyboard){
         this.level = level1;
@@ -19,7 +20,6 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-        this.checkBottleAvailability();
     }
 
     setWorld(){
@@ -76,25 +76,32 @@ class World {
 
     checkThrownBottle() {
         this.checkBottleAvailability();
-        if (this.canThrow == true && this.keyboard.E) {
-            let bottle = new ThrowBottle(this.character.x, this.character.y);
-            this.throwBottle.push(bottle);
-            this.character.bottle -= 20;
-            this.canThrow = false;
+        if (this.canThrow == true && this.cooldownReady && this.keyboard.E) {
+            this.bottleThrow();
             
             let bottlePercentage = this.character.bottle;  
             this.statusbarBottle.setPercentage(bottlePercentage);
+            this.canThrow = false;
+            this.cooldownReady = false;
 
             setTimeout(() => {
-                this.checkBottleAvailability();
-            }, 800);
+            this.cooldownReady = true;  
+        }, 300);
         }
     }
 
     checkBottleAvailability() {
-        if (this.character.bottle > 0) {
-            this.canThrow = true
+        if (this.character.bottle >= 20) {
+            this.canThrow = true;
+        } else {
+            this.canThrow = false;
         }
+    }
+
+    bottleThrow(){
+        let bottle = new ThrowBottle(this.character.x, this.character.y);
+        this.throwBottle.push(bottle);
+        this.character.bottle -= 20;
     }
     
     draw(){
