@@ -1,15 +1,47 @@
+@font-face {
+  font-family: "Sombrero";
+  src: url("./fonts/CactusSandwich.ttf") format("truetype");
+}
+
 body{
     margin: 0;
     min-height: 100dvh;
     width: 100dvw;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     background-image: url('assets/img/BackgroundImg/DesertBackground.jpg');
     background-size: cover;
+    background-position: center;
 }
+
+h1{
+    font-family: "Sombrero", serif;
+    font-size: 150px;
+    font-weight: 400;
+    color: rgb(57, 109, 33);
+    margin: 0px 0 10px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
 canvas{
     background-color: black;
     border: 8px solid rgb(135, 36, 0);
+    justify-self: center;
+    align-self: center;
+    margin-bottom: 130px;
+}
+
+a{
+    text-decoration: none;
+    color: rgba(130, 35, 1, 0.718);
+    position: absolute;
+    bottom: 15px;
+    right: 60px;
+    font-size: 18px;
+}
+
+a:hover{
+    color: rgba(57, 19, 0, 0.622);
 }
