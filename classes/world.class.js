@@ -17,6 +17,7 @@ class World {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
+        this.canBeHit = true;
         this.draw();
         this.setWorld();
         this.run();
@@ -38,12 +39,16 @@ class World {
         this.collideWithCoin();
         this.collideWithBottle();
     }
-
-    collideWithEnemy(){
-        this.level.enemies.forEach( (enemy) => {
-            if (this.character.isColliding(enemy)) {
+    // weniger oft prüfen, cooldown
+    collideWithEnemy() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy) && this.canBeHit) {
                 this.character.hit();
                 this.statusbar.setPercentage(this.character.energy);
+                this.canBeHit = false;
+                setTimeout(() => {
+                    this.canBeHit = true;
+                }, 1300);
             }
         });
     }
