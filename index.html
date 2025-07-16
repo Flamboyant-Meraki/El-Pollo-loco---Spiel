@@ -7,7 +7,6 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <script src="./script.js"></script>
     <script src="./classes/drawable-object.class.js"></script>
     <script src="./classes/movable-object.class.js"></script>
     <script src="./classes/character.class.js"></script>
@@ -33,16 +32,17 @@
     <div id="menuScreen">
         <section id="start">
             <button id="startNewGame" onclick="startNewGame()"> START NEW GAME</button>
-            <div>
-                <button id=""></button>
-                <button id=""></button>
-            </div>
+            <nav class="navigation">
+                <button id="controls">Controls</button>
+                <button id="impressum">Impressum</button>
+            </nav>
         </section>
         <section id="youWinScreen">
 
         </section>
         <section id="youLooseScreen">
-
+            <img src="./assets/img/9_intro_outro_screens/game_over/game over.png" alt="GameOver">
+            <button id="newStart" onclick="startNewGame()">New Game</button>
         </section>
     </div>
 

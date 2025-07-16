@@ -12,10 +12,10 @@ class Character extends MovableObject {
     'assets/img/2_character_pepe/3_jump/J-34.png',
     'assets/img/2_character_pepe/3_jump/J-34.png',
     'assets/img/2_character_pepe/3_jump/J-34.png',
-    'assets/img/2_character_pepe/3_jump/J-34.png',
     'assets/img/2_character_pepe/3_jump/J-35.png',
     'assets/img/2_character_pepe/3_jump/J-35.png',
     'assets/img/2_character_pepe/3_jump/J-36.png',
+    'assets/img/2_character_pepe/3_jump/J-37.png',
     'assets/img/2_character_pepe/3_jump/J-37.png',
     'assets/img/2_character_pepe/3_jump/J-38.png',
     'assets/img/2_character_pepe/3_jump/J-38.png'

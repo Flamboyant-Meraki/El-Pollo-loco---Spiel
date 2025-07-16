@@ -10,7 +10,7 @@
 
 body{
     margin: 0;
-    min-height: 100dvh;
+    height: 100dvh;
     width: 100dvw;
     display: flex;
     align-items: center;
@@ -42,7 +42,7 @@ canvas{
 
 a{
     text-decoration: none;
-    color: rgba(130, 35, 1, 0.718);
+    color: rgba(130, 35, 1, 0.795);
     position: sticky;
     bottom: 15px;
     font-size: 18px;
@@ -50,6 +50,34 @@ a{
 
 a:hover{
     color: rgba(57, 19, 0, 0.622);
+}
+
+button{
+    max-width: 620px;
+    font-family: "West";
+    color: rgb(135, 36, 0);
+    text-align: center;
+    cursor: pointer;
+    background-color: rgba(251, 216, 171, 0.615);
+    border: 6px, solid, rgb(135, 36, 0);
+    border-radius: 30px;
+}
+
+button:hover{
+    opacity: 70%;
+}
+
+.navigation{
+    width: 600px;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+    justify-self: center;
+}
+
+.navigation button{
+    font-size: 34px;
+    padding: 5px 12px;
 }
 
 #menuScreen{
@@ -65,19 +93,32 @@ a:hover{
     flex-direction: column;
 }
 
-#startNewGame{
-    max-width: 620px;
-    font-family: "West";
-    font-size: 90px;
-    color: rgb(135, 36, 0);
-    text-align: center;
-    cursor: pointer;
-    background-color: rgba(251, 216, 171, 0.615);
-    border: 6px, solid, rgb(135, 36, 0);
-    border-radius: 30px;
+#start{
+    display: block;
 }
-#startNewGame:hover{
-    opacity: 70%;
+
+#startNewGame{
+    font-size: 90px;
+}
+
+#youLooseScreen{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#youLooseScreen img{
+    width: 100dvw;
+    height: 100dvh;
+    object-fit: cover;
+}
+
+#newStart{
+    position: absolute;
+    bottom: 100px;
+    font-size: 50px;
+    padding: 10px;
 }
 
 
