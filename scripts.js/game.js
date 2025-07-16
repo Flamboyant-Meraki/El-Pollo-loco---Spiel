@@ -2,9 +2,13 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 
-function init(){
-    canvas = document.getElementById('canvas');
-    world = new World(canvas, keyboard);
+function startNewGame() {
+  document.getElementById('startScreen').style.display = 'none';
+
+  const level = createLevel1();  
+  const canvas = document.getElementById('canvas');
+
+  world = new World(canvas, keyboard, level); 
 }
 
 window.addEventListener('keydown', (event) => {

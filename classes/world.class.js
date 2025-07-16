@@ -1,6 +1,6 @@
 class World {
     character = new Character();
-    level = level1;
+    level;
     canvas;
     ctx;
     keyboard;
@@ -12,8 +12,8 @@ class World {
     canThrow = false;
     cooldownReady = true;
 
-    constructor(canvas, keyboard){
-        this.level = level1;
+    constructor(canvas, keyboard, level){
+        this.level = level;
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
