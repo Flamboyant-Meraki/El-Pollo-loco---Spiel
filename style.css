@@ -31,6 +31,7 @@ canvas{
     justify-self: center;
     align-self: center;
     margin-bottom: 130px;
+    display: block;
 }
 
 a{
@@ -44,4 +45,19 @@ a{
 
 a:hover{
     color: rgba(57, 19, 0, 0.622);
+}
+
+@media only screen and (max-width: 720px) {
+    canvas {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    canvas {
+        height: 100%;
+    }
+    h1 {
+        display: none;
+    }
 }

@@ -39,7 +39,7 @@ class World {
         this.collideWithCoin();
         this.collideWithBottle();
     }
-    // weniger oft prüfen, cooldown
+   
     collideWithEnemy() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && this.canBeHit) {
