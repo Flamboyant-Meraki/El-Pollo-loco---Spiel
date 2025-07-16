@@ -3,7 +3,7 @@ let world;
 let keyboard = new Keyboard();
 
 function startNewGame() {
-  document.getElementById('startScreen').style.display = 'none';
+  document.getElementById('menuScreen').style.display = 'none';
 
   const level = createLevel1();  
   const canvas = document.getElementById('canvas');
