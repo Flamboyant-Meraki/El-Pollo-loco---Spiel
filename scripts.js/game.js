@@ -4,6 +4,7 @@ let keyboard = new Keyboard();
 
 function startNewGame() {
   document.getElementById('menuScreen').style.display = 'none';
+  document.getElementById('youLooseScreen').style.display = 'none';
 
   const level = createLevel1();  
   const canvas = document.getElementById('canvas');
