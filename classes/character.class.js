@@ -88,9 +88,8 @@ class Character extends MovableObject {
     }, 1000 / 60);
 
     setInterval(() => {
-      if (this.isDead()) {
-        this.playAnimation(this.images_dying);
-        this.gameIsOver();
+      if (this.isDead() && !this.gameOver) {
+          this.playAnimation(this.images_dying);
       } else if(this.isHurt()){
           this.playAnimation(this.images_hurt);
       } else if (this.isAboveGround()) {
@@ -101,11 +100,5 @@ class Character extends MovableObject {
           this.playAnimation(this.images_idle);
         }
     }, 100);
-  }
-
-  gameIsOver(){
-    console.log("Game Over ausgelöst");
-    document.getElementById('menuScreen').style.display = 'none';
-    document.getElementById('youLooseScreen').style.display = 'flex';
   }
 }
