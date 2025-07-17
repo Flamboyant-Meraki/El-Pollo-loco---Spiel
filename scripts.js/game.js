@@ -4,7 +4,6 @@ let keyboard = new Keyboard();
 
 function startNewGame() {
   document.getElementById('menuScreen').style.display = 'none';
-  document.getElementById('youLooseScreen').style.display = 'none';
 
   const level = createLevel1();  
   const canvas = document.getElementById('canvas');
@@ -47,3 +46,30 @@ window.addEventListener('keyup', (event) => {
         keyboard.E = false;
     }
 });
+
+function fullscreen(){
+    let fullscreen = document.getElementById('fullscreen');
+    openFullscreen(fullscreen);
+}
+
+/* View in fullscreen */
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
+/* Close fullscreen */
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE11 */
+    document.msExitFullscreen();
+  }
+}

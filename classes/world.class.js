@@ -8,7 +8,8 @@ class World {
     statusbar = new StatusBar();
     statusbarCoins = new StatusBarCoins();
     statusbarBottle = new StatusBarBottles();
-    throwBottle = [new ThrowBottle()];
+    throwBottle = [new ThrowBottle()]; 
+    fullscreen = new DrawableObject();
     canThrow = false;
     cooldownReady = true;
 
@@ -128,6 +129,7 @@ class World {
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwBottle)
+        this.addToMap(this.fullscreen);
         this.ctx.translate(-this.camera_x, 0);
 
         let self = this;
