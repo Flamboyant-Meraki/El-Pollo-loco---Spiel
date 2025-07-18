@@ -8,8 +8,7 @@ class World {
     statusbar = new StatusBar();
     statusbarCoins = new StatusBarCoins();
     statusbarBottle = new StatusBarBottles();
-    throwBottle = [new ThrowBottle()]; 
-    fullscreen = new DrawableObject();
+    throwBottle = [new ThrowBottle()];
     canThrow = false;
     cooldownReady = true;
 
@@ -19,6 +18,9 @@ class World {
         this.canvas = canvas;
         this.keyboard = keyboard;
         this.canBeHit = true;
+        this.buttonImage = new Image();
+        this.buttonImage.src = 'assets/img/icons/fullscreen.png';
+        this.clickListener();
         this.draw();
         this.setWorld();
         this.run();
@@ -124,12 +126,12 @@ class World {
         this.addToMap(this.statusbar);
         this.addToMap(this.statusbarCoins);
         this.addToMap(this.statusbarBottle);
+        this.drawButton();
         this.ctx.translate(this.camera_x, 0);
-
+    
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwBottle)
-        this.addToMap(this.fullscreen);
         this.ctx.translate(-this.camera_x, 0);
 
         let self = this;
@@ -166,5 +168,58 @@ class World {
     flippImgBack(mo){
         mo.x = mo.x * -1;
         this.ctx.restore();
+    }
+
+    drawButton() {
+        const x = 670;
+        const y = 440;
+        const width = 30;
+        const height = 25;
+
+        if (this.buttonImage.complete) {
+            this.ctx.drawImage(this.buttonImage, x, y, width, height);
+        }
+    }
+
+    clickListener(){
+        this.canvas.addEventListener('click', (e) => {
+            const rect = this.canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const btnX = 600;     // Gleiche Position wie im drawButton()
+            const btnY = 430;
+            const btnWidth = 120;
+            const btnHeight = 40;
+
+            // Klick innerhalb des Button-Bereichs?
+            if (x >= btnX && x <= btnX + btnWidth &&
+                y >= btnY && y <= btnY + btnHeight) {
+
+                this.activateFullscreen();
+            }
+        });
+    }
+
+    activateFullscreen() {
+        const fsElement = document.fullscreenElement || document.webkitFullscreenElement;
+
+        if (fsElement) {
+            // Exit fullscreen
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            }
+            console.log('Vollbild deaktiviert!');
+        } else {
+            // Enter fullscreen
+            if (this.canvas.requestFullscreen) {
+                this.canvas.requestFullscreen();
+            } else if (this.canvas.webkitRequestFullscreen) {
+                this.canvas.webkitRequestFullscreen();
+            }
+            console.log('Vollbild aktiviert!');
+        }
     }
 }

@@ -5,11 +5,8 @@ class DrawableObject {
     width = 125;
     imageCache = [];
     currentImage = 0;
-    image_fullscreen = ['assets/img/icons/fullscreen.png'];
 
-    constructor(){
-        this.loadImages(this.image_fullscreen);
-    }
+
 
     loadImage(path) {
         this.img = new Image();
