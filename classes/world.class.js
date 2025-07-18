@@ -176,6 +176,11 @@ class World {
         const width = 30;
         const height = 25;
 
+        const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement;
+        if (isFullscreen) {
+            return;
+        }
+
         if (this.buttonImage.complete) {
             this.ctx.drawImage(this.buttonImage, x, y, width, height);
         }
