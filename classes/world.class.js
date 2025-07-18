@@ -178,11 +178,13 @@ class World {
 
         const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement;
         if (isFullscreen) {
+            document.getElementById('canvas').style.border = 'none'
             return;
         }
 
         if (this.buttonImage.complete) {
             this.ctx.drawImage(this.buttonImage, x, y, width, height);
+            document.getElementById('canvas').style.border = '8px solid rgb(135, 36, 0)';
         }
     }
 
