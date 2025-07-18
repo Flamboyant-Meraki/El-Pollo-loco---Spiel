@@ -140,6 +140,42 @@ button:hover{
     z-index: 100;
 }
 
+#fullscreen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#controlside{
+    width: 100dvw;
+    height: 100dvh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#controlside nav{
+    width: 100dvw;
+    max-width: 600px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#controlside nav button{
+    font-size: 34px;
+    padding: 5px 12px;
+}
+
+.controlShowcase{
+    color: rgb(135, 36, 0);
+    font-family: "West";
+    font-size: 50px;
+    text-align: left;
+}
+
 
 
 @media only screen and (max-width: 720px) {

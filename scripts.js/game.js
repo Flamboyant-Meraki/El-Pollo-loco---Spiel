@@ -73,3 +73,13 @@ function closeFullscreen() {
     document.msExitFullscreen();
   }
 }
+
+function showControls() {
+  document.getElementById('start').style.display = 'none';
+  document.getElementById('controlside').style.display = 'flex';
+}
+
+function toMainMenu(){
+  document.getElementById('controlside').style.display = 'none';
+  document.getElementById('start').style.display = 'block';
+}

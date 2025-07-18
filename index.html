@@ -32,10 +32,23 @@
         <section id="start">
             <button id="startNewGame" onclick="startNewGame()"> START NEW GAME</button>
             <nav class="navigation">
-                <button id="controls">Controls</button>
+                <button id="controls" onclick="showControls()">Controls</button>
                 <button id="impressum">Impressum</button>
             </nav>
         </section>
+        <div id="controlside">
+            <div class="controlShowcase">
+                <p>A = Walk Left</p>
+                <p>D = Walk Right</p>
+                <p>E = Throw</p>
+                <p>SPACE = Jump</p>
+
+            </div>
+            <nav>
+                <button onclick="toMainMenu()">Back</button>
+                <button id="startGame" onclick="startNewGame()">Start Game</button>
+            </nav>
+        </div>
         <section id="youWinScreen">
             <img src="./assets/img/You won, you lost/You Won B.png" alt="You Win">
             <button id="newStart" onclick="startNewGame()">Play Again</button>
