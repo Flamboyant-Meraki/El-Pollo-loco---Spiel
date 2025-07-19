@@ -42,5 +42,4 @@ class ThrowBottle extends MovableObject {
             this.y < other.y + other.height &&
             this.y + this.height > other.y;
     }
-    
 }

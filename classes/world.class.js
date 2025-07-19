@@ -194,12 +194,11 @@ class World {
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
 
-            const btnX = 600;     // Gleiche Position wie im drawButton()
+            const btnX = 600;    
             const btnY = 430;
             const btnWidth = 120;
             const btnHeight = 40;
 
-            // Klick innerhalb des Button-Bereichs?
             if (x >= btnX && x <= btnX + btnWidth &&
                 y >= btnY && y <= btnY + btnHeight) {
 
@@ -212,7 +211,6 @@ class World {
         const fsElement = document.fullscreenElement || document.webkitFullscreenElement;
 
         if (fsElement) {
-            // Exit fullscreen
             if (document.exitFullscreen) {
                 document.exitFullscreen();
             } else if (document.webkitExitFullscreen) {
@@ -220,7 +218,6 @@ class World {
             }
             console.log('Vollbild deaktiviert!');
         } else {
-            // Enter fullscreen
             if (this.canvas.requestFullscreen) {
                 this.canvas.requestFullscreen();
             } else if (this.canvas.webkitRequestFullscreen) {
