@@ -1,5 +1,6 @@
 class World {
     character = new Character();
+    thrownBottle = new ThrowBottle();
     level;
     canvas;
     ctx;
@@ -47,6 +48,19 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && this.canBeHit) {
                 this.character.hit();
+                this.statusbar.setPercentage(this.character.energy);
+                this.canBeHit = false;
+                setTimeout(() => {
+                    this.canBeHit = true;
+                }, 1300);
+            }
+        });
+    }
+
+    BottleCollideWithEnemy() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.thrownBottle.isColliding(enemy) && this.canBeHit) {
+                this.thrownBottle.hit();
                 this.statusbar.setPercentage(this.character.energy);
                 this.canBeHit = false;
                 setTimeout(() => {
@@ -216,14 +230,12 @@ class World {
             } else if (document.webkitExitFullscreen) {
                 document.webkitExitFullscreen();
             }
-            console.log('Vollbild deaktiviert!');
         } else {
             if (this.canvas.requestFullscreen) {
                 this.canvas.requestFullscreen();
             } else if (this.canvas.webkitRequestFullscreen) {
                 this.canvas.webkitRequestFullscreen();
             }
-            console.log('Vollbild aktiviert!');
         }
     }
 }
