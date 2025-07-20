@@ -60,7 +60,7 @@ class Endboss extends MovableObject {
             } else {
                 this.playAnimation(this.images_alert);
             }
-        }, 1000 / 60);
+        }, 160);
 
         setInterval(() => {
             if (this.isDead() && !this.gameOver) {
