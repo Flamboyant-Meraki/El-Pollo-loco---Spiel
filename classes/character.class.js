@@ -90,6 +90,9 @@ class Character extends MovableObject {
     setInterval(() => {
       if (this.isDead() && !this.gameOver) {
           this.playAnimation(this.images_dying);
+          document.getElementById('menuScreen').style.display = 'flex';
+          document.getElementById('start').style.display = 'none';
+          document.getElementById('youLooseScreen').style.display = 'flex';
       } else if(this.isHurt()){
           this.playAnimation(this.images_hurt);
       } else if (this.isAboveGround()) {

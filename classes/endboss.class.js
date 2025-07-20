@@ -55,7 +55,7 @@ class Endboss extends MovableObject {
 
     animate(){
         setInterval(() => {
-            if(this.charcter) {
+            if(this.charcter >= 1000) {
                 this.moveRight();
             } else {
                 this.playAnimation(this.images_alert);
