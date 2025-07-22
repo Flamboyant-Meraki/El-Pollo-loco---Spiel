@@ -35,8 +35,6 @@ class ThrowBottle extends MovableObject {
     }
 
     isColliding(other) {
-        console.log('collided bottle');
-        
         return this.x < other.x + other.width &&
             this.x + this.width > other.x &&
             this.y < other.y + other.height &&

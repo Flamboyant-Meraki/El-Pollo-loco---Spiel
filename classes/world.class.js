@@ -1,7 +1,7 @@
 class World {
     character = new Character();
     thrownBottle = new ThrowBottle();
-    level;
+    endboss = new Endboss();
     canvas;
     ctx;
     keyboard;
@@ -42,6 +42,7 @@ class World {
         this.collideWithEnemy();
         this.collideWithCoin();
         this.collideWithBottle();
+        this.thrownBottleCollideWithEnemy();
     }
    
     collideWithEnemy() {
@@ -57,15 +58,14 @@ class World {
         });
     }
 
-    BottleCollideWithEnemy() {
+    thrownBottleCollideWithEnemy() {
         this.level.enemies.forEach((enemy) => {
             if (this.thrownBottle.isColliding(enemy) && this.canBeHit) {
-                this.thrownBottle.hit();
-                this.statusbar.setPercentage(this.character.energy);
+                this.endboss.hit();
                 this.canBeHit = false;
                 setTimeout(() => {
                     this.canBeHit = true;
-                }, 1300);
+                }, 1200);
             }
         });
     }
