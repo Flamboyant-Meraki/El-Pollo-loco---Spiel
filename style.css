@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Sombrero";
-  src: url("./fonts/CactusSandwich.ttf") format("truetype");
+  src: url("./fonts/EdmundsDistressed.ttf") format("truetype");
 }
 
 @font-face {
@@ -24,9 +24,9 @@ body{
 
 h1{
     font-family: "Sombrero", serif;
-    font-size: 150px;
+    font-size: 140px;
     font-weight: 400;
-    color: rgb(57, 109, 33);
+    color: #99240d;
     margin: 0px 0 10px 0;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
