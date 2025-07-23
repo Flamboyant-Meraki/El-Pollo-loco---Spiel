@@ -58,6 +58,11 @@ class Endboss extends MovableObject {
             if(this.charcter >= 1000) {
                 this.moveRight();
                 this.playAnimation(this.images_walking)
+                setTimeout(() => {
+                    document.getElementById('menuScreen').style.display = 'flex';
+                    document.getElementById('start').style.display = 'none';
+                    document.getElementById('youWinScreen').style.display = 'flex';
+                }, 1500);
             } 
         }, 160);
 
