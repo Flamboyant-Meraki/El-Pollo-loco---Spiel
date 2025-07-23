@@ -40,6 +40,7 @@ class Endboss extends MovableObject {
     width = 300;
     y = 50;
     energy = 60;
+    world;
     
 
     constructor() {
@@ -56,22 +57,21 @@ class Endboss extends MovableObject {
     animate(){
         let i = 0;
         setInterval(() => {
-            if(world.charcter.x >= 1000) {
+            if(Math.abs(world.character.x - world.endboss.x) <= 500) {
                 console.log('boss moving');
-                
                 this.moveRight();
                 this.playAnimation(this.images_walking)
-                setTimeout(() => {
-                    document.getElementById('menuScreen').style.display = 'flex';
-                    document.getElementById('start').style.display = 'none';
-                    document.getElementById('youWinScreen').style.display = 'flex';
-                }, 1500);
             } 
         }, 160);
 
         setInterval(() => {
             if (this.isDead() && !this.gameOver) {
                 this.playAnimation(this.images_dead);
+                setTimeout(() => {
+                    document.getElementById('menuScreen').style.display = 'flex';
+                    document.getElementById('start').style.display = 'none';
+                    document.getElementById('youWinScreen').style.display = 'flex';
+                }, 1500);
             } else if(this.isHurt()){
                 this.playAnimation(this.images_hurt);
             } else {
