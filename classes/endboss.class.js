@@ -54,8 +54,11 @@ class Endboss extends MovableObject {
     }
 
     animate(){
+        let i = 0;
         setInterval(() => {
-            if(this.charcter >= 1000) {
+            if(world.charcter.x >= 1000) {
+                console.log('boss moving');
+                
                 this.moveRight();
                 this.playAnimation(this.images_walking)
                 setTimeout(() => {

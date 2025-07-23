@@ -114,9 +114,16 @@ button:hover{
     object-fit: cover;
 }
 
-#newStart{
+#youLooseScreen nav{
     position: absolute;
     bottom: 100px;
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+#youLooseScreen nav button{
     font-size: 50px;
     padding: 10px;
 }
