@@ -16,7 +16,7 @@ class Coin extends DrawableObject {
         let placed = false;
         let tries = 0;
         while (!placed && tries < Coin.MAX_TRIES) {
-            this.x = Math.random() * (1500 - this.width);
+            this.x = Math.random() * (1500 - this.width - 210) + 250;
             this.y = Math.random() * (450 - this.height);
             if (!this.isOverlappingAny()) {
                 placed = true;
