@@ -56,9 +56,9 @@ function fullscreen(){
 function openFullscreen() {
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) { /* Safari */
+  } else if (elem.webkitRequestFullscreen) { 
     elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE11 */
+  } else if (elem.msRequestFullscreen) { 
     elem.msRequestFullscreen();
   }
 }
@@ -67,9 +67,9 @@ function openFullscreen() {
 function closeFullscreen() {
   if (document.exitFullscreen) {
     document.exitFullscreen();
-  } else if (document.webkitExitFullscreen) { /* Safari */
+  } else if (document.webkitExitFullscreen) { 
     document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) { /* IE11 */
+  } else if (document.msExitFullscreen) { 
     document.msExitFullscreen();
   }
 }
@@ -81,5 +81,15 @@ function showControls() {
 
 function toMainMenu(){
   document.getElementById('controlside').style.display = 'none';
+  document.getElementById('youLooseScreen').style.display = 'none';
+  document.getElementById('youWinScreen').style.display = 'none';
   document.getElementById('start').style.display = 'block';
+}
+
+function resetGame() {
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  world = null;
+  gameOver = true;
 }

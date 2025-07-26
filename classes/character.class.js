@@ -91,9 +91,13 @@ class Character extends MovableObject {
       if (this.isDead() && !this.gameOver) {
           this.playAnimation(this.images_dying);
           setTimeout(() => {
+            this.gameOver = true;
             document.getElementById('menuScreen').style.display = 'flex';
             document.getElementById('start').style.display = 'none';
             document.getElementById('youLooseScreen').style.display = 'flex';
+            setTimeout(() => {
+              resetGame();
+            }, 300);
           }, 1500);
       } else if(this.isHurt()){
           this.playAnimation(this.images_hurt);
