@@ -12,6 +12,7 @@ class World {
     throwBottle = [new ThrowBottle()];
     canThrow = false;
     cooldownReady = true;
+    gameOver = false;
 
     constructor(canvas, keyboard, level){
         this.level = level;

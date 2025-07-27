@@ -9,6 +9,7 @@ class MovableObject extends DrawableObject {
     lastCoin = 0;
     bottle = 0;
     lastBottle = 0;
+    gameOver = false;
 
 
     applyGravity(){
@@ -82,7 +83,7 @@ class MovableObject extends DrawableObject {
     }
 
     isDead(){
-        return this.energy == 0;
+        return this.energy === 0;
     }
 
     collectCoin(){

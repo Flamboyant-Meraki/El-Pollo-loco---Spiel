@@ -90,17 +90,15 @@ class Character extends MovableObject {
     setInterval(() => {
       if (this.isDead() && !this.gameOver) {
         this.playAnimation(this.images_dying);
+        this.gameOver = true;
         setTimeout(() => {
-          this.gameOver = true;
           document.getElementById("menuScreen").style.display = "flex";
+          document.getElementById("controlside").style.display = "none";
           document.getElementById("youWinScreen").style.display = "none";
           document.getElementById("start").style.display = "none";
           document.getElementById("youLooseScreen").style.display = "flex";
           console.log('ich bin der fehler');
-          
-          setTimeout(() => {
-            resetGame();
-          }, 50);
+          console.log(this.gameOver);
         }, 1500);
       } else if (this.isHurt()) {
         this.playAnimation(this.images_hurt);
