@@ -56,24 +56,17 @@ class Endboss extends MovableObject {
 
     animate(){
         setInterval(() => {
-            if(Math.abs(world.character.x - world.endboss.x) <= 500) {
-                console.log('boss moving');
-                this.moveRight();
-                this.playAnimation(this.images_walking)
-            } 
-        }, 160);
-
-        setInterval(() => {
             if (this.isDead() && !this.gameOver) {
                 this.playAnimation(this.images_dead);
                 setTimeout(() => {
                     this.gameOver = true;
                     document.getElementById('menuScreen').style.display = 'flex';
+                    document.getElementById('youLooseScreen').style.display = 'none';
                     document.getElementById('start').style.display = 'none';
                     document.getElementById('youWinScreen').style.display = 'flex';
                     setTimeout(() => {
                         resetGame();
-                    }, 300);
+                    }, 50);
                 }, 1500);
             } else if(this.isHurt()){
                 this.playAnimation(this.images_hurt);

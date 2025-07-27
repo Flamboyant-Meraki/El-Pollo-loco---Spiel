@@ -5,52 +5,52 @@ class Character extends MovableObject {
     "assets/img/2_character_pepe/2_walk/W-23.png",
     "assets/img/2_character_pepe/2_walk/W-24.png",
     "assets/img/2_character_pepe/2_walk/W-25.png",
-    "assets/img/2_character_pepe/2_walk/W-26.png"
+    "assets/img/2_character_pepe/2_walk/W-26.png",
   ];
 
   images_jumping = [
-    'assets/img/2_character_pepe/3_jump/J-34.png',
-    'assets/img/2_character_pepe/3_jump/J-34.png',
-    'assets/img/2_character_pepe/3_jump/J-34.png',
-    'assets/img/2_character_pepe/3_jump/J-35.png',
-    'assets/img/2_character_pepe/3_jump/J-35.png',
-    'assets/img/2_character_pepe/3_jump/J-36.png',
-    'assets/img/2_character_pepe/3_jump/J-37.png',
-    'assets/img/2_character_pepe/3_jump/J-37.png',
-    'assets/img/2_character_pepe/3_jump/J-38.png',
-    'assets/img/2_character_pepe/3_jump/J-38.png'
+    "assets/img/2_character_pepe/3_jump/J-34.png",
+    "assets/img/2_character_pepe/3_jump/J-34.png",
+    "assets/img/2_character_pepe/3_jump/J-34.png",
+    "assets/img/2_character_pepe/3_jump/J-35.png",
+    "assets/img/2_character_pepe/3_jump/J-35.png",
+    "assets/img/2_character_pepe/3_jump/J-36.png",
+    "assets/img/2_character_pepe/3_jump/J-37.png",
+    "assets/img/2_character_pepe/3_jump/J-37.png",
+    "assets/img/2_character_pepe/3_jump/J-38.png",
+    "assets/img/2_character_pepe/3_jump/J-38.png",
   ];
 
   images_dying = [
-    'assets/img/2_character_pepe/5_dead/D-51.png',
-    'assets/img/2_character_pepe/5_dead/D-52.png',
-    'assets/img/2_character_pepe/5_dead/D-53.png',
-    'assets/img/2_character_pepe/5_dead/D-54.png',
-    'assets/img/2_character_pepe/5_dead/D-55.png',
-    'assets/img/2_character_pepe/5_dead/D-56.png',
-    'assets/img/2_character_pepe/5_dead/D-57.png'
+    "assets/img/2_character_pepe/5_dead/D-51.png",
+    "assets/img/2_character_pepe/5_dead/D-52.png",
+    "assets/img/2_character_pepe/5_dead/D-53.png",
+    "assets/img/2_character_pepe/5_dead/D-54.png",
+    "assets/img/2_character_pepe/5_dead/D-55.png",
+    "assets/img/2_character_pepe/5_dead/D-56.png",
+    "assets/img/2_character_pepe/5_dead/D-57.png",
   ];
 
   images_hurt = [
-    'assets/img/2_character_pepe/4_hurt/H-41.png',
-    'assets/img/2_character_pepe/4_hurt/H-42.png',
-    'assets/img/2_character_pepe/4_hurt/H-43.png'
+    "assets/img/2_character_pepe/4_hurt/H-41.png",
+    "assets/img/2_character_pepe/4_hurt/H-42.png",
+    "assets/img/2_character_pepe/4_hurt/H-43.png",
   ];
 
   images_idle = [
-    'assets/img/2_character_pepe/1_idle/idle/I-1.png',
-    'assets/img/2_character_pepe/1_idle/idle/I-2.png',
-    'assets/img/2_character_pepe/1_idle/idle/I-3.png',
-    'assets/img/2_character_pepe/1_idle/idle/I-4.png',
-    'assets/img/2_character_pepe/1_idle/idle/I-5.png',
-    'assets/img/2_character_pepe/1_idle/idle/I-6.png',
-    'assets/img/2_character_pepe/1_idle/idle/I-7.png',
-    'assets/img/2_character_pepe/1_idle/idle/I-8.png',
-    'assets/img/2_character_pepe/1_idle/idle/I-9.png',
-    'assets/img/2_character_pepe/1_idle/idle/I-10.png'
+    "assets/img/2_character_pepe/1_idle/idle/I-1.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-2.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-3.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-4.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-5.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-6.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-7.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-8.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-9.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-10.png",
   ];
 
-  y = 180; 
+  y = 180;
   currentImage = 0;
   world;
   speed = 10;
@@ -68,13 +68,13 @@ class Character extends MovableObject {
 
   animate() {
     setInterval(() => {
-      if(this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+      if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.moveRight();
         this.otherDirection = false;
         // this.walking_sound.play();
       }
 
-      if(this.world.keyboard.LEFT && this.x > 0) {
+      if (this.world.keyboard.LEFT && this.x > 0) {
         this.moveLeft();
         this.otherDirection = true;
         // this.walking_sound.play();
@@ -89,25 +89,28 @@ class Character extends MovableObject {
 
     setInterval(() => {
       if (this.isDead() && !this.gameOver) {
-          this.playAnimation(this.images_dying);
+        this.playAnimation(this.images_dying);
+        setTimeout(() => {
+          this.gameOver = true;
+          document.getElementById("menuScreen").style.display = "flex";
+          document.getElementById("youWinScreen").style.display = "none";
+          document.getElementById("start").style.display = "none";
+          document.getElementById("youLooseScreen").style.display = "flex";
+          console.log('ich bin der fehler');
+          
           setTimeout(() => {
-            this.gameOver = true;
-            document.getElementById('menuScreen').style.display = 'flex';
-            document.getElementById('start').style.display = 'none';
-            document.getElementById('youLooseScreen').style.display = 'flex';
-            setTimeout(() => {
-              resetGame();
-            }, 300);
-          }, 1500);
-      } else if(this.isHurt()){
-          this.playAnimation(this.images_hurt);
+            resetGame();
+          }, 50);
+        }, 1500);
+      } else if (this.isHurt()) {
+        this.playAnimation(this.images_hurt);
       } else if (this.isAboveGround()) {
-          this.playAnimation(this.images_jumping);
-      } else if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-          this.playAnimation(this.images_walking);
-        } else {
-          this.playAnimation(this.images_idle);
-        }
+        this.playAnimation(this.images_jumping);
+      } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+        this.playAnimation(this.images_walking);
+      } else {
+        this.playAnimation(this.images_idle);
+      }
     }, 100);
   }
 }

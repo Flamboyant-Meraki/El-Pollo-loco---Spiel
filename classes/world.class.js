@@ -42,7 +42,7 @@ class World {
         this.collideWithEnemy();
         this.collideWithCoin();
         this.collideWithBottle();
-        this.thrownBottleCollideWithEnemy();
+        this.bossCollideWithBottle();
     }
    
     collideWithEnemy() {
@@ -58,14 +58,22 @@ class World {
         });
     }
 
-    thrownBottleCollideWithEnemy() {
-        this.level.enemies.forEach((enemy) => {
-            if (this.thrownBottle.isColliding(enemy) && this.canBeHit) {
+    bossCollideWithBottle() {
+        this.throwBottle.forEach((thrownBottle) => {
+            if (thrownBottle.isColliding(this.endboss) && this.canBeHit) {
                 this.endboss.hit();
                 this.canBeHit = false;
+                console.log(this.endboss.energy);
+                console.log(this.character.energy);
+                
+                const index = this.throwBottle.indexOf(thrownBottle);
+                if (index > -1) {
+                    this.throwBottle.splice(index, 1);
+                }
+
                 setTimeout(() => {
                     this.canBeHit = true;
-                }, 1200);
+                }, 800);
             }
         });
     }
@@ -81,7 +89,7 @@ class World {
                 }
             }
         });
-    }
+    }e
 
     collideWithBottle(){
         this.level.bottles.forEach( (bottle) => {
