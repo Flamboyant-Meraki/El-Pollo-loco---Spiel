@@ -25,7 +25,7 @@ class MovableObject extends DrawableObject {
     }
 
     isAboveGround(){
-        if (this instanceof ThrowBottle) {
+        if (this instanceof ThrowBottle || (this instanceof Character && this.isDead())) {
             return true;
         } else {
             return this.y < 180;

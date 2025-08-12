@@ -90,7 +90,9 @@ class Character extends MovableObject {
     setInterval(() => {
       if (this.isDead() && !this.gameOver) {
         this.playAnimation(this.images_dying);
+        this.jump();
         this.gameOver = true;
+
         setTimeout(() => {
           document.getElementById("menuScreen").style.display = "flex";
           document.getElementById("controlside").style.display = "none";
@@ -100,7 +102,16 @@ class Character extends MovableObject {
           console.log('ich bin der fehler');
           console.log(this.gameOver);
         }, 1500);
-      } else if (this.isHurt()) {
+
+        return;
+      }
+
+      
+      if (this.isDead()) {
+        return;
+      }
+
+      if (this.isHurt()) {
         this.playAnimation(this.images_hurt);
       } else if (this.isAboveGround()) {
         this.playAnimation(this.images_jumping);
