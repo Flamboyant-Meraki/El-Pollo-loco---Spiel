@@ -35,11 +35,6 @@ class ThrowBottle extends MovableObject {
 
     this.throwInterval = setInterval(() => {
         this.x += 10;
-
-        if (this.isColliding()) {
-            console.log('hit it');
-            this.playAnimation(this.images_splash);
-        }
     }, 20);
 
     this.animationInterval = setInterval(() => {
