@@ -116,4 +116,10 @@ class MovableObject extends DrawableObject {
         return timepassed > 1;
     }    
     
+    checkEndbossTrigger() {
+        if (this.world && this.world.character && this.world.character.y === 1000) {
+            this.endbossTriggered = true;
+            console.log('Endboss triggered!');
+        }
+    }
 }

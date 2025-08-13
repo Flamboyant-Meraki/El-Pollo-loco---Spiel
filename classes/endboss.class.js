@@ -41,6 +41,7 @@ class Endboss extends MovableObject {
     y = 50;
     energy = 60;
     world;
+    endbossTriggered = false;
     
 
     constructor() {
@@ -71,9 +72,22 @@ class Endboss extends MovableObject {
                 }, 1500);
             } else if(this.isHurt()){
                 this.playAnimation(this.images_hurt);
+            } else if(this.endbossTriggered === true){
+                this.playAnimation(this.images_walking);
+                setInterval(() => { 
+                    this.moveLeft();
+                }, 60);
             } else {
                 this.playAnimation(this.images_alert);
+                this.checkEndbossTrigger();
             }
         }, 160);
+    }
+
+    checkEndbossTrigger() {
+        if (this.world && this.world.character && this.world.character.y === 1000) {
+            this.endbossTriggered = true;
+            console.log('Endboss triggered!');
+        }
     }
 }
