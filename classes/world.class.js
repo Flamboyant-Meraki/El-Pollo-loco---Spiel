@@ -20,7 +20,7 @@ class World {
         this.keyboard = keyboard;
         this.canBeHit = true;
         this.buttonImage = new Image();
-        this.buttonImage.src = 'assets/img/icons/fullscreen.png';
+        this.buttonImage.src = 'assets/img/icons/width_full.png';
         this.clickListener();
         this.draw();
         this.setWorld();
