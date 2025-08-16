@@ -99,8 +99,6 @@ class Character extends MovableObject {
           document.getElementById("youWinScreen").style.display = "none";
           document.getElementById("start").style.display = "none";
           document.getElementById("youLooseScreen").style.display = "flex";
-          console.log('ich bin der fehler');
-          console.log(this.gameOver);
         }, 1500);
 
         return;

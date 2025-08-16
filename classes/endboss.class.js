@@ -42,6 +42,7 @@ class Endboss extends MovableObject {
     energy = 60;
     world;
     endbossTriggered = false;
+    speed = 3;
     
 
     constructor() {
@@ -55,11 +56,18 @@ class Endboss extends MovableObject {
         this.animate();
     }
 
-    animate(){
+    animate() {
+        setInterval(() => {
+            if (this.endbossTriggered && !this.isDead()) {
+                this.moveLeft();
+            }
+        }, 60);
+
         setInterval(() => {
             if (this.isDead() && !this.gameOver) {
                 this.playAnimation(this.images_dead);
                 this.gameOver = true;
+
                 setTimeout(() => {
                     document.getElementById('menuScreen').style.display = 'flex';
                     document.getElementById("controlside").style.display = "none";
@@ -70,13 +78,11 @@ class Endboss extends MovableObject {
                         resetGame();
                     }, 50);
                 }, 1500);
-            } else if(this.isHurt()){
+            }
+            if (this.isHurt()) {
                 this.playAnimation(this.images_hurt);
-            } else if(this.endbossTriggered === true){
+            } else if (this.endbossTriggered) {
                 this.playAnimation(this.images_walking);
-                setInterval(() => { 
-                    this.moveLeft();
-                }, 60);
             } else {
                 this.playAnimation(this.images_alert);
                 this.checkEndbossTrigger();
