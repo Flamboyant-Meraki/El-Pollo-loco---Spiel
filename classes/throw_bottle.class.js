@@ -16,6 +16,8 @@ class ThrowBottle extends MovableObject {
     ];
 
     static allThrownBottles = [];
+    energy = 20;
+    hasCollidedWithBoss = false;
 
 
     constructor(x, y){
@@ -27,29 +29,32 @@ class ThrowBottle extends MovableObject {
         this.width = 80;
         this.height = 70;
         this.throw();
+        
     }
 
     throw() {
-    this.speedY = 20;
-    this.applyGravity();
+        if (this.hasCollidedWithBoss) {
+            this.speedY = 0;
+            this.applyGravity();
 
-    this.throwInterval = setInterval(() => {
-        this.x += 10;
-    }, 20);
+            this.throwInterval = setInterval(() => {
+                this.x += 0;
+            }, 20);
 
-    this.animationInterval = setInterval(() => {
-        this.playAnimation(this.images_throw);
-    }, 60);
-}
+            this.animationInterval = setInterval(() => {
+                this.playAnimation(this.images_splash);
+            }, 60);
+        } else {
+            this.speedY = 20;
+            this.applyGravity();
 
-    isOverlappingAny() {
-        return ThrowBottle.allThrownBottles.some(thrownBottle => this.isColliding(thrownBottle));
-    }
+            this.throwInterval = setInterval(() => {
+                this.x += 10;
+            }, 20);
 
-    isColliding(other) {
-        return this.x < other.x + other.width &&
-            this.x + this.width > other.x &&
-            this.y < other.y + other.height &&
-            this.y + this.height > other.y;
+            this.animationInterval = setInterval(() => {
+                this.playAnimation(this.images_throw);
+            }, 60);
+        }
     }
 }

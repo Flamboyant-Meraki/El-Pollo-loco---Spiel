@@ -64,10 +64,9 @@ class Endboss extends MovableObject {
         }, 60);
 
         setInterval(() => {
-            if (this.isDead()) {
+            if (this.isDead() && !this.gameOver) {
                 this.playAnimation(this.images_dead);
                 this.gameOver = true;
-
                 setTimeout(() => {
                     document.getElementById('menuScreen').style.display = 'flex';
                     document.getElementById("controlside").style.display = "none";
