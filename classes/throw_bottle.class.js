@@ -17,7 +17,6 @@ class ThrowBottle extends MovableObject {
 
     static allThrownBottles = [];
     energy = 20;
-    hasCollidedWithBoss = false;
 
 
     constructor(x, y){
@@ -33,16 +32,12 @@ class ThrowBottle extends MovableObject {
     }
 
     throw() {
-        if (this.hasCollidedWithBoss) {
+        if (this.bottleCollapse) {
             this.speedY = 0;
-            this.applyGravity();
-
-            this.throwInterval = setInterval(() => {
-                this.x += 0;
-            }, 20);
-
+            this.x = 0;
             this.animationInterval = setInterval(() => {
                 this.playAnimation(this.images_splash);
+                this.bottleCollapse = false;
             }, 60);
         } else {
             this.speedY = 20;

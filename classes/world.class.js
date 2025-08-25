@@ -12,6 +12,8 @@ class World {
     throwBottle = [new ThrowBottle()];
     canThrow = false;
     cooldownReady = true;
+    gameOver = false;
+    
 
     constructor(canvas, keyboard, level){
         this.level = level;
@@ -62,11 +64,9 @@ class World {
         this.throwBottle.forEach((thrownBottle) => {
             if (this.endboss.isColliding(thrownBottle) && this.canBeHit) {
                 this.endboss.hit();
-                this.thrownBottle.hasCollidedWithBoss = true;
                 this.canBeHit = false;
                 setTimeout(() => {
                     this.canBeHit = true;
-                    this.thrownBottle.hasCollidedWithBoss = false;
                 }, 800);
             }
         });
