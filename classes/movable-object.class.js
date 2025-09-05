@@ -60,12 +60,14 @@ class MovableObject extends DrawableObject {
         this.speedY = 30;
     }
 
-    isColliding(mo){
-        return this.x < mo.x + mo.width &&
-           this.x + this.width > mo.x &&
-           this.y < mo.y + mo.height &&
-           this.y + this.height > mo.y;
-    }
+    isColliding(mo) {
+    const minOverlap = 50; // Mindestüberlappung in Pixeln
+
+    const overlapX = Math.min(this.x + this.width, mo.x + mo.width) - Math.max(this.x, mo.x);
+    const overlapY = Math.min(this.y + this.height, mo.y + mo.height) - Math.max(this.y, mo.y);
+
+    return overlapX > minOverlap && overlapY > minOverlap;
+}
 
     hit(){
         this.energy -= 20;
