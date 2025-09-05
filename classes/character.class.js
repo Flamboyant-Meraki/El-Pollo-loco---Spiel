@@ -92,6 +92,8 @@ class Character extends MovableObject {
         this.playAnimation(this.images_dying);
         this.jump();
         this.gameOver = true;
+        console.log(this.gameOver);
+        
         setTimeout(() => {
           document.getElementById("menuScreen").style.display = "flex";
           document.getElementById("controlside").style.display = "none";

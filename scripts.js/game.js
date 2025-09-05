@@ -97,4 +97,6 @@ function resetGame() {
 
   enemies = [];
   MovableObject.gameOver = false;
+  Character.energy = 100;
+  Endboss.energy = 60;
 }

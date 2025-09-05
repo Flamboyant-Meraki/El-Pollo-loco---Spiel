@@ -12,7 +12,6 @@ class World {
     throwBottle = [new ThrowBottle()];
     canThrow = false;
     cooldownReady = true;
-    gameOver = false;
     
 
     constructor(canvas, keyboard, level){
@@ -45,6 +44,8 @@ class World {
         this.collideWithCoin();
         this.collideWithBottle();
         this.bossCollideWithBottle();
+        console.log(this.character.energy);
+        console.log(this.endboss.energy);
     }
    
     collideWithEnemy() {
