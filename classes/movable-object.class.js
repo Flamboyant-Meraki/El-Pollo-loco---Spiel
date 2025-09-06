@@ -61,13 +61,13 @@ class MovableObject extends DrawableObject {
     }
 
     isColliding(mo) {
-    const minOverlap = 50; // Mindestüberlappung in Pixeln
+        const minOverlap = 50;
 
-    const overlapX = Math.min(this.x + this.width, mo.x + mo.width) - Math.max(this.x, mo.x);
-    const overlapY = Math.min(this.y + this.height, mo.y + mo.height) - Math.max(this.y, mo.y);
+        const overlapX = Math.min(this.x + this.width, mo.x + mo.width) - Math.max(this.x, mo.x);
+        const overlapY = Math.min(this.y + this.height, mo.y + mo.height) - Math.max(this.y, mo.y);
 
-    return overlapX > minOverlap && overlapY > minOverlap;
-}
+        return overlapX > minOverlap && overlapY > minOverlap;
+    }
 
     hit(){
         this.energy -= 20;

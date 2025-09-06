@@ -79,6 +79,8 @@ class Endboss extends MovableObject {
                 }, 1500);
             } else if (this.isHurt()) {
                 this.playAnimation(this.images_hurt);
+                console.log('treffer');
+                console.log(this.energy);
             } else if (this.endbossTriggered) {
                 this.playAnimation(this.images_walking);
             } else {

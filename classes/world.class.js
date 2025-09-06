@@ -44,8 +44,6 @@ class World {
         this.collideWithCoin();
         this.collideWithBottle();
         this.bossCollideWithBottle();
-        console.log(this.character.energy);
-        console.log(this.endboss.energy);
     }
    
     collideWithEnemy() {
@@ -168,7 +166,7 @@ class World {
             this.flippImg(mo);
         }
         mo.draw(this.ctx);
-        mo.drawFrame(this.ctx);
+        // mo.drawFrame(this.ctx);
 
         if(mo.otherDirection){
             this.flippImgBack(mo);
