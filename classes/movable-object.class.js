@@ -36,12 +36,12 @@ class MovableObject extends DrawableObject {
         return this.y >= this.groundLevel;
     }
 
-    playAnimation(images){
-       if (this.currentImages !== images) {
+    playAnimation(images) {
+        if (this.currentImages !== images) {
             this.currentImages = images;
             this.currentImage = 0;
         }
-        
+
         let i = this.currentImage % images.length;
         let path = images[i];
         this.img = this.imageCache[path];

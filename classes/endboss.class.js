@@ -75,7 +75,7 @@ class Endboss extends MovableObject {
                     document.getElementById('youWinScreen').style.display = 'flex';
                     setTimeout(() => {
                         resetGame();
-                    }, 50);
+                    }, 500);
                 }, 1500);
             } else if (this.isHurt()) {
                 this.playAnimation(this.images_hurt);
