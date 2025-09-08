@@ -1,4 +1,9 @@
 class Endboss extends MovableObject {
+    /**
+     * Image sequence for alert animation.
+     * Triggered when the endboss is idle but aware.
+     * @type {string[]}
+     */
     images_alert = [
         'assets/img/4_enemie_boss_chicken/2_alert/G5.png',
         'assets/img/4_enemie_boss_chicken/2_alert/G6.png',
@@ -9,22 +14,46 @@ class Endboss extends MovableObject {
         'assets/img/4_enemie_boss_chicken/2_alert/G11.png',
         'assets/img/4_enemie_boss_chicken/2_alert/G12.png'
     ];
+
+    /**
+     * Image sequence for hurt animation.
+     * Triggered when the endboss takes damage.
+     * @type {string[]}
+     */
     images_hurt = [
         'assets/img/4_enemie_boss_chicken/4_hurt/G21.png',
         'assets/img/4_enemie_boss_chicken/4_hurt/G22.png',
         'assets/img/4_enemie_boss_chicken/4_hurt/G23.png'
     ];
+
+    /**
+     * Image sequence for death animation.
+     * Triggered when the endboss dies.
+     * @type {string[]}
+     */
     images_dead = [
         'assets/img/4_enemie_boss_chicken/5_dead/G24.png',
         'assets/img/4_enemie_boss_chicken/5_dead/G25.png',
         'assets/img/4_enemie_boss_chicken/5_dead/G26.png'
     ];
+
+    /**
+     * Image sequence for walking animation.
+     * Triggered when the endboss moves.
+     * @type {string[]}
+     */
     images_walking = [
         'assets/img/4_enemie_boss_chicken/1_walk/G1.png',
         'assets/img/4_enemie_boss_chicken/1_walk/G2.png',
         'assets/img/4_enemie_boss_chicken/1_walk/G3.png',
         'assets/img/4_enemie_boss_chicken/1_walk/G4.png'
     ];
+
+    /**
+     * Image sequence for attack animation.
+     * Triggered when the endboss performs an attack.
+     * @type {string[]}
+     */
     images_attack = [
         'assets/img/4_enemie_boss_chicken/3_attack/G13.png',
         'assets/img/4_enemie_boss_chicken/3_attack/G14.png',
@@ -36,15 +65,30 @@ class Endboss extends MovableObject {
         'assets/img/4_enemie_boss_chicken/3_attack/G20.png'
     ];
 
+    /** @type {number} Height of the endboss sprite in pixels */
     height = 400;
-    width = 300;
-    y = 50;
-    energy = 60;
-    world;
-    endbossTriggered = false;
-    speed = 3;
-    
 
+    /** @type {number} Width of the endboss sprite in pixels */
+    width = 300;
+
+    /** @type {number} Vertical position of the endboss */
+    y = 50;
+
+    /** @type {number} Current energy level (health) of the endboss */
+    energy = 60;
+
+    /** @type {World} Reference to the game world */
+    world;
+
+    /** @type {boolean} Indicates whether the endboss has been triggered */
+    endbossTriggered = false;
+
+    /** @type {number} Movement speed of the endboss */
+    speed = 3;
+
+    /**
+     * Creates an instance of Endboss and initializes its animations and position.
+     */
     constructor() {
         super().loadImage('assets/img/4_enemie_boss_chicken/2_alert/G5.png');
         this.loadImages(this.images_alert);
@@ -56,33 +100,44 @@ class Endboss extends MovableObject {
         this.animate();
     }
 
+    /**
+     * Starts the animation loop for the endboss.
+     * Handles movement, animation switching, and game-over logic.
+     */
     animate() {
+        // Movement loop
         setInterval(() => {
             if (this.endbossTriggered && !this.isDead()) {
                 this.moveLeft();
             }
         }, 60);
 
+        // Animation loop
         setInterval(() => {
             if (this.isDead() && !this.gameOver) {
                 this.playAnimation(this.images_dead);
                 this.gameOver = true;
+
                 setTimeout(() => {
                     document.getElementById('menuScreen').style.display = 'flex';
                     document.getElementById("controlside").style.display = "none";
                     document.getElementById('youLooseScreen').style.display = 'none';
                     document.getElementById('start').style.display = 'none';
                     document.getElementById('youWinScreen').style.display = 'flex';
+
                     setTimeout(() => {
                         resetGame();
                     }, 500);
                 }, 1500);
+
             } else if (this.isHurt()) {
                 this.playAnimation(this.images_hurt);
-                console.log('treffer');
+                console.log('Hit detected');
                 console.log(this.energy);
+
             } else if (this.endbossTriggered) {
                 this.playAnimation(this.images_walking);
+
             } else {
                 this.playAnimation(this.images_alert);
                 this.checkEndbossTrigger();
