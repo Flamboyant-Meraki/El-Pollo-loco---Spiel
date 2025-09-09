@@ -11,7 +11,12 @@ class Bottle extends DrawableObject {
         this.randomPlaced();
     }
 
-    randomPlaced(){
+    /**
+     * Attempts to place the bottle at a random position within a defined horizontal range.
+     * Ensures that the bottle does not overlap with any existing bottles.
+     * The method tries up to Bottle.MAX_TRIES times before giving up.
+     */
+    randomPlaced() {
         let placed = false;
         let tries = 0;
         while (!placed && tries < Bottle.MAX_TRIES) {
@@ -26,10 +31,20 @@ class Bottle extends DrawableObject {
         }
     }
 
+    /**
+     * Checks whether this bottle overlaps with any other bottle in the Bottle.allBottles array.
+     * @returns {boolean} True if overlapping with any other bottle, false otherwise.
+     */
     isOverlappingAny() {
         return Bottle.allBottles.some(bottle => this.isColliding(bottle));
     }
 
+    /**
+     * Determines whether this bottle is colliding with another bottle.
+     * Collision is based on axis-aligned bounding box (AABB) logic.
+     * @param {Bottle} other - The other bottle to check collision against.
+     * @returns {boolean} True if the bottles are colliding, false otherwise.
+     */
     isColliding(other) {
         return this.x < other.x + other.width &&
             this.x + this.width > other.x &&
