@@ -134,10 +134,8 @@ class Endboss extends MovableObject {
                 this.playAnimation(this.images_hurt);
                 console.log('Hit detected');
                 console.log(this.energy);
-
             } else if (this.endbossTriggered) {
                 this.playAnimation(this.images_walking);
-
             } else {
                 this.playAnimation(this.images_alert);
                 this.checkEndbossTrigger();
