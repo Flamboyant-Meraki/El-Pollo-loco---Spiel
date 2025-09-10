@@ -1,4 +1,8 @@
 class Character extends MovableObject {
+  /**
+   * Array of image paths used for the walking animation of the character.
+   * @type {string[]}
+   */
   images_walking = [
     "assets/img/2_character_pepe/2_walk/W-21.png",
     "assets/img/2_character_pepe/2_walk/W-22.png",
@@ -8,6 +12,10 @@ class Character extends MovableObject {
     "assets/img/2_character_pepe/2_walk/W-26.png",
   ];
 
+  /**
+   * Array of image paths used for the jumping animation of the character.
+   * @type {string[]}
+   */
   images_jumping = [
     "assets/img/2_character_pepe/3_jump/J-34.png",
     "assets/img/2_character_pepe/3_jump/J-34.png",
@@ -21,6 +29,10 @@ class Character extends MovableObject {
     "assets/img/2_character_pepe/3_jump/J-38.png",
   ];
 
+  /**
+   * Array of image paths used for the dying animation of the character.
+   * @type {string[]}
+   */
   images_dying = [
     "assets/img/2_character_pepe/5_dead/D-51.png",
     "assets/img/2_character_pepe/5_dead/D-52.png",
@@ -31,12 +43,20 @@ class Character extends MovableObject {
     "assets/img/2_character_pepe/5_dead/D-57.png",
   ];
 
+  /**
+   * Array of image paths used for the hurt animation of the character.
+   * @type {string[]}
+   */
   images_hurt = [
     "assets/img/2_character_pepe/4_hurt/H-41.png",
     "assets/img/2_character_pepe/4_hurt/H-42.png",
     "assets/img/2_character_pepe/4_hurt/H-43.png",
   ];
 
+  /**
+   * Array of image paths used for the idle animation of the character.
+   * @type {string[]}
+   */
   images_idle = [
     "assets/img/2_character_pepe/1_idle/idle/I-1.png",
     "assets/img/2_character_pepe/1_idle/idle/I-2.png",
@@ -50,11 +70,34 @@ class Character extends MovableObject {
     "assets/img/2_character_pepe/1_idle/idle/I-10.png",
   ];
 
+  /**
+   * Initial vertical position of the character.
+   * @type {number}
+   */
   y = 180;
+
+  /**
+   * Index of the currently displayed animation frame.
+   * @type {number}
+   */
   currentImage = 0;
+
+  /**
+   * Reference to the game world object.
+   * @type {object}
+   */
   world;
+
+  /**
+   * Movement speed of the character.
+   * @type {number}
+   */
   speed = 10;
 
+  /**
+   * Initializes the character by loading images and starting animations.
+   * @constructor
+   */
   constructor() {
     super().loadImage("assets/img/2_character_pepe/2_walk/W-21.png");
     this.loadImages(this.images_walking);
@@ -66,6 +109,10 @@ class Character extends MovableObject {
     this.animate();
   }
 
+  /**
+   * Starts the animation loop for character movement and state transitions.
+   * Handles user input and updates character animation accordingly.
+   */
   animate() {
     setInterval(() => {
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
@@ -93,7 +140,7 @@ class Character extends MovableObject {
         this.jump();
         this.gameOver = true;
         console.log(this.gameOver);
-        
+
         setTimeout(() => {
           document.getElementById("menuScreen").style.display = "flex";
           document.getElementById("controlside").style.display = "none";

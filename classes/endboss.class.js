@@ -65,25 +65,13 @@ class Endboss extends MovableObject {
         'assets/img/4_enemie_boss_chicken/3_attack/G20.png'
     ];
 
-    /** @type {number} Height of the endboss sprite in pixels */
+    
     height = 400;
-
-    /** @type {number} Width of the endboss sprite in pixels */
     width = 300;
-
-    /** @type {number} Vertical position of the endboss */
     y = 50;
-
-    /** @type {number} Current energy level (health) of the endboss */
     energy = 60;
-
-    /** @type {World} Reference to the game world */
     world;
-
-    /** @type {boolean} Indicates whether the endboss has been triggered */
     endbossTriggered = false;
-
-    /** @type {number} Movement speed of the endboss */
     speed = 3;
 
     /**
