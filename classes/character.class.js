@@ -70,28 +70,9 @@ class Character extends MovableObject {
     "assets/img/2_character_pepe/1_idle/idle/I-10.png",
   ];
 
-  /**
-   * Initial vertical position of the character.
-   * @type {number}
-   */
   y = 180;
-
-  /**
-   * Index of the currently displayed animation frame.
-   * @type {number}
-   */
   currentImage = 0;
-
-  /**
-   * Reference to the game world object.
-   * @type {object}
-   */
   world;
-
-  /**
-   * Movement speed of the character.
-   * @type {number}
-   */
   speed = 10;
 
   /**
@@ -141,12 +122,13 @@ class Character extends MovableObject {
         this.gameOver = true;
         console.log(this.gameOver);
 
-        setTimeout(() => {
+        loseScreenTimeout = setTimeout(() => {
           document.getElementById("menuScreen").style.display = "flex";
           document.getElementById("controlside").style.display = "none";
           document.getElementById("youWinScreen").style.display = "none";
           document.getElementById("start").style.display = "none";
           document.getElementById("youLooseScreen").style.display = "flex";
+          loseScreenTimeout = null;
         }, 1500);
 
         return;
