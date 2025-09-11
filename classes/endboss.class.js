@@ -124,10 +124,18 @@ class Endboss extends MovableObject {
                 console.log(this.energy);
             } else if (this.endbossTriggered) {
                 this.playAnimation(this.images_walking);
+                this.moveLeft();
             } else {
                 this.playAnimation(this.images_alert);
                 this.checkEndbossTrigger();
             }
         }, 160);
+    }
+
+    checkEndbossTrigger() {
+        if (this.character >= 1000) {
+            this.endbossTriggered = true;
+            console.log('Endboss triggered!');
+        }
     }
 }

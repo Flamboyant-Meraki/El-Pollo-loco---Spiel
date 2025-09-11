@@ -119,7 +119,7 @@ class MovableObject extends DrawableObject {
     }    
     
     checkEndbossTrigger() {
-        if (this.world && this.world.character && this.world.character.y === 1000) {
+        if (this.character.x >= 1000) {
             this.endbossTriggered = true;
             console.log('Endboss triggered!');
         }
