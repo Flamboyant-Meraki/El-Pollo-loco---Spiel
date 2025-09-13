@@ -73,7 +73,7 @@ class Endboss extends MovableObject {
     world;
     endbossTriggered = false;
     speed = 3;
-    character = Character;
+    winTimeout;
 
     /**
      * Creates an instance of Endboss and initializes its animations and position.
@@ -107,15 +107,14 @@ class Endboss extends MovableObject {
                 this.playAnimation(this.images_dead);
                 this.gameOver = true;
 
-                setTimeout(() => {
+                winTimeout = setTimeout(() => {
                     document.getElementById('menuScreen').style.display = 'flex';
                     document.getElementById("controlside").style.display = "none";
                     document.getElementById('youLooseScreen').style.display = 'none';
                     document.getElementById('start').style.display = 'none';
                     document.getElementById('youWinScreen').style.display = 'flex';
-
                     setTimeout(() => {
-                        resetGame();
+                        resetGame()
                     }, 500);
                 }, 1500);
 
@@ -134,9 +133,8 @@ class Endboss extends MovableObject {
     }
 
     checkEndbossTrigger() {
-        if (world.character.x >= 1000) {
+        if (world.character.x >= 1150) {
             this.endbossTriggered = true;
-            console.log('Endboss triggered!');
         }
     }
 }

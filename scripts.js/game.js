@@ -96,7 +96,9 @@ function resetGame() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   enemies = [];
-  MovableObject.gameOver = false;
+  gameOver = false;
   Character.energy = 100;
   Endboss.energy = 60;
+  clearTimeout(winTimeout);
+  clearTimeout(resetTimeout);
 }

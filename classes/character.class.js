@@ -74,6 +74,7 @@ class Character extends MovableObject {
   currentImage = 0;
   world;
   speed = 10;
+  loseTimeout;
 
   /**
    * Initializes the character by loading images and starting animations.
@@ -121,14 +122,17 @@ class Character extends MovableObject {
         this.jump();
         this.gameOver = true;
         console.log(this.gameOver);
-
-        loseScreenTimeout = setTimeout(() => {
+        clearTimeout(winTimeout);
+        clearTimeout(resetTimeout);
+        loseTimeout = setTimeout(() => {
           document.getElementById("menuScreen").style.display = "flex";
           document.getElementById("controlside").style.display = "none";
           document.getElementById("youWinScreen").style.display = "none";
           document.getElementById("start").style.display = "none";
           document.getElementById("youLooseScreen").style.display = "flex";
-          loseScreenTimeout = null;
+          setTimeout(() => {
+            resetGame()
+          }, 500);
         }, 1500);
 
         return;
