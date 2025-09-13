@@ -117,11 +117,4 @@ class MovableObject extends DrawableObject {
         timepassed = timepassed / 1000;
         return timepassed > 1;
     }    
-    
-    checkEndbossTrigger() {
-        if (this.character.x >= 1000) {
-            this.endbossTriggered = true;
-            console.log('Endboss triggered!');
-        }
-    }
 }

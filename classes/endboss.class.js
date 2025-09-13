@@ -73,6 +73,7 @@ class Endboss extends MovableObject {
     world;
     endbossTriggered = false;
     speed = 3;
+    character = Character;
 
     /**
      * Creates an instance of Endboss and initializes its animations and position.
@@ -133,7 +134,7 @@ class Endboss extends MovableObject {
     }
 
     checkEndbossTrigger() {
-        if (this.character >= 1000) {
+        if (world.character.x >= 1000) {
             this.endbossTriggered = true;
             console.log('Endboss triggered!');
         }
