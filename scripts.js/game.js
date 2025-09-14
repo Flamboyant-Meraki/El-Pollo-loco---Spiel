@@ -99,6 +99,4 @@ function resetGame() {
   gameOver = false;
   Character.energy = 100;
   Endboss.energy = 60;
-  clearTimeout(winTimeout);
-  clearTimeout(resetTimeout);
 }

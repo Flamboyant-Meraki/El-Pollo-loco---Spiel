@@ -10,6 +10,7 @@ class MovableObject extends DrawableObject {
     bottle = 0;
     lastBottle = 0;
     gameOver = false;
+    endbossHurt = false;
 
 
     applyGravity(){
@@ -78,10 +79,20 @@ class MovableObject extends DrawableObject {
         }
     }
 
-    isHurt(){
+    isHurt() {
         let timepassed = new Date().getTime() - this.lastHit;
         timepassed = timepassed / 1000;
-        return timepassed < 1 ;
+
+        const isHurt = timepassed < 1;
+
+        if (isHurt && this instanceof Endboss) {
+            this.endbossHurt = true;
+            setTimeout(() => {
+                this.endbossHurt = false;
+            }, 600);
+        }
+
+        return isHurt;
     }
 
     isDead(){
