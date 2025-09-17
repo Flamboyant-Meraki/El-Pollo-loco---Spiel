@@ -97,7 +97,13 @@ class Endboss extends MovableObject {
         // Movement loop
         setInterval(() => {
             if (this.endbossTriggered && !this.isDead()) {
-                this.moveLeft();
+                if (world.endboss.x - world.character.x > 0) {
+                    this.moveLeft();
+                    this.otherDirection = false;
+                } else {
+                    this.moveRight();
+                    this.otherDirection = true;
+                }
             }
         }, 60);
 
@@ -137,10 +143,8 @@ class Endboss extends MovableObject {
     checkEndbossTrigger() {
         if (world.endboss.x - world.character.x <= 500) {
             this.endbossTriggered = true;
-            console.log('lauf los');
         } else {
             this.endbossTriggered = false;
-            console.log('stopp!');
         }
     }
 }
