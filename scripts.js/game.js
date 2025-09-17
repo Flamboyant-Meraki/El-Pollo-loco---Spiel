@@ -13,6 +13,7 @@ function startNewGame() {
   const canvas = document.getElementById('canvas');
 
   world = new World(canvas, keyboard, level); 
+  gameOver = false;
 }
 
 /**
@@ -126,7 +127,6 @@ function resetGame() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   enemies = [];
-  gameOver = false;
   Character.energy = 100;
   Endboss.energy = 60;
 }

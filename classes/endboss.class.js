@@ -72,7 +72,7 @@ class Endboss extends MovableObject {
     energy = 60;
     world;
     endbossTriggered = false;
-    speed = 6;
+    speed = 4;
     winTimeout;
 
     /**
@@ -112,7 +112,7 @@ class Endboss extends MovableObject {
             if (this.isDead() && !this.gameOver) {
                 this.playAnimation(this.images_dead);
                 this.gameOver = true;
-                winTimeout = setTimeout(() => {
+                setTimeout(() => {
                     document.getElementById('menuScreen').style.display = 'flex';
                     document.getElementById("controlside").style.display = "none";
                     document.getElementById('youLooseScreen').style.display = 'none';
@@ -126,7 +126,6 @@ class Endboss extends MovableObject {
             } else if (this.isHurt()) {
                 if (this.endbossHurt) {
                     this.playAnimation(this.images_hurt);
-                    console.log('Hit detected');
                     console.log(this.energy);
                 }
             } else if (this.endbossTriggered === true) {
@@ -136,7 +135,6 @@ class Endboss extends MovableObject {
                 this.playAnimation(this.images_alert);
                 this.checkEndbossTrigger();
             }
-            console.log(this.endbossTriggered);
         }, 160);
     }
 

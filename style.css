@@ -136,7 +136,6 @@ button:hover{
 }
 
 #youWinScreen button{
-    position: absolute;
     bottom: 180px;
     font-size: 50px;
     padding: 10px;
@@ -144,6 +143,15 @@ button:hover{
 
 #youWinScreen img{
     max-width: 80dvw;
+}
+
+#youWinScreen nav{
+    position: absolute;
+    bottom: 200px;
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
 }
 
 .fullscreen{
