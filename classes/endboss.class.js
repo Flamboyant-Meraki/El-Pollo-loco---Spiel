@@ -72,7 +72,7 @@ class Endboss extends MovableObject {
     energy = 60;
     world;
     endbossTriggered = false;
-    speed = 3;
+    speed = 6;
     winTimeout;
 
     /**
@@ -123,19 +123,24 @@ class Endboss extends MovableObject {
                     console.log('Hit detected');
                     console.log(this.energy);
                 }
-            } else if (this.endbossTriggered) {
+            } else if (this.endbossTriggered === true) {
                 this.playAnimation(this.images_walking);
-                this.moveLeft();
+                this.checkEndbossTrigger();
             } else {
                 this.playAnimation(this.images_alert);
                 this.checkEndbossTrigger();
             }
+            console.log(this.endbossTriggered);
         }, 160);
     }
 
     checkEndbossTrigger() {
-        if (world.character.x >= 1150) {
+        if (world.endboss.x - world.character.x <= 500) {
             this.endbossTriggered = true;
+            console.log('lauf los');
+        } else {
+            this.endbossTriggered = false;
+            console.log('stopp!');
         }
     }
 }
