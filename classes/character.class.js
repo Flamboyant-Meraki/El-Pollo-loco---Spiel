@@ -80,7 +80,7 @@ class Character extends MovableObject {
     "assets/img/2_character_pepe/1_idle/long_idle/I-17.png",
     "assets/img/2_character_pepe/1_idle/long_idle/I-18.png",
     "assets/img/2_character_pepe/1_idle/long_idle/I-19.png",
-    "assets/img/2_character_pepe/1_idle/long_idle/I-20.png"
+    "assets/img/2_character_pepe/1_idle/long_idle/I-20.png",
   ];
 
   y = 180;
@@ -99,6 +99,7 @@ class Character extends MovableObject {
     this.loadImages(this.images_jumping);
     this.loadImages(this.images_dying);
     this.loadImages(this.images_hurt);
+    this.loadImages(this.images_idle);
     this.loadImages(this.images_idle);
     this.applyGravity();
     this.animate();
@@ -126,6 +127,10 @@ class Character extends MovableObject {
         this.jump();
       }
 
+      if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.SPACE) {
+          this.lastActivityTime = new Date().getTime();
+      }
+
       this.world.camera_x = -this.x + 100;
     }, 1000 / 60);
 
@@ -141,7 +146,7 @@ class Character extends MovableObject {
           document.getElementById("start").style.display = "none";
           document.getElementById("youLooseScreen").style.display = "flex";
           setTimeout(() => {
-            resetGame()
+            resetGame();
           }, 500);
         }, 1500);
 
@@ -159,7 +164,14 @@ class Character extends MovableObject {
       } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
         this.playAnimation(this.images_walking);
       } else {
-        this.playAnimation(this.images_idle);
+        const now = new Date().getTime();
+        const idleTime = now - this.lastActivityTime;
+
+        if (idleTime > 10000) {
+          this.playAnimation(this.images_long_idle);
+        } else {
+          this.playAnimation(this.images_idle);
+        }
       }
     }, 100);
   }
