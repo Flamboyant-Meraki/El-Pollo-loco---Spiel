@@ -40,7 +40,7 @@ class ThrowBottle extends MovableObject {
                 this.bottleCollapse = false;
             }, 60);
         } else {
-            this.speedY = 20;
+            this.speedY = 12;
             this.applyGravity();
 
             this.throwInterval = setInterval(() => {

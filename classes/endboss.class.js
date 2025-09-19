@@ -97,7 +97,7 @@ class Endboss extends MovableObject {
     animate() {
         // Movement loop
         setInterval(() => {
-            if (this.endbossTriggered && !this.isDead()) {
+            if (this.endbossTriggered && !this.isDead() && !this.endbossIsHurt) {
                 if (world.endboss.x - world.character.x > 0) {
                     this.moveLeft();
                     this.otherDirection = false;
@@ -110,6 +110,8 @@ class Endboss extends MovableObject {
 
         // Animation loop
         setInterval(() => {
+            this.checkEndbossTrigger();
+            console.log(this.endbossIsHurt);
             if (this.isDead() && !this.gameOver) {
                 this.playAnimation(this.images_dead);
                 this.gameOver = true;
@@ -123,35 +125,24 @@ class Endboss extends MovableObject {
                         resetGame()
                     }, 500);
                 }, 1500);
-            } else if (this.endbossIsHurt === true) { 
+            } else if (this.endbossIsHurt) {
                 this.playAnimation(this.images_hurt);
-            } else if (this.endbossTriggered === true) {
+                setTimeout(() => {
+                    this.endbossIsHurt = false;
+                }, 800);
+            } else if (this.endbossTriggered === true && !this.endbossIsHurt) {
                 this.playAnimation(this.images_walking);
-                this.checkEndbossTrigger();
-                this.checkEndbossIsHurt();
             } else {
                 this.playAnimation(this.images_alert);
-                this.checkEndbossTrigger();
-                this.checkEndbossIsHurt();
             }
         }, 160);
     }
 
     checkEndbossTrigger() {
-        if (world.endboss.x - world.character.x <= 500) {
+        if (world.endboss.x - world.character.x <= 380) {
             this.endbossTriggered = true;
         } else {
             this.endbossTriggered = false;
-        }
-    }
-
-    checkEndbossIsHurt() {
-        if (this.isHurt()) {
-            console.log('Boss gets hurt');
-            this.endbossIsHurt = true;
-            setTimeout(() => {
-                this.endbossIsHurt = false;
-            }, 400);
         }
     }
 }

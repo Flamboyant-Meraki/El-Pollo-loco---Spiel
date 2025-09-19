@@ -22,6 +22,7 @@ class World {
         this.canBeHit = true;
         this.buttonImage = new Image();
         this.buttonImage.src = 'assets/img/icons/width_full.png';
+        this.buttonImage.style.cursor = 'pointer';
         this.clickListener();
         this.draw();
         this.setWorld();
