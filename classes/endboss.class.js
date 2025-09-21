@@ -111,8 +111,7 @@ class Endboss extends MovableObject {
         // Animation loop
         setInterval(() => {
             this.checkEndbossTrigger();
-            console.log(this.endbossIsHurt);
-            if (this.isDead() && !this.gameOver) {
+            if (this.isDead()) {
                 this.playAnimation(this.images_dead);
                 this.gameOver = true;
                 setTimeout(() => {
