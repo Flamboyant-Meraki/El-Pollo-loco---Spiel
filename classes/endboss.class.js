@@ -125,11 +125,8 @@ class Endboss extends MovableObject {
                         resetGame()
                     }, 500);
                 }, 1500);
-            } else if (this.endbossIsHurt) {
+            } else if (this.isHurt()) {
                 this.playAnimation(this.images_hurt);
-                setTimeout(() => {
-                    this.endbossIsHurt = false;
-                }, 800);
             } else if (this.endbossTriggered === true && !this.endbossIsHurt) {
                 this.playAnimation(this.images_walking);
             } else {

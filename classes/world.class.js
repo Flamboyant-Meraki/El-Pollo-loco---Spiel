@@ -22,7 +22,6 @@ class World {
         this.canBeHit = true;
         this.buttonImage = new Image();
         this.buttonImage.src = 'assets/img/icons/width_full.png';
-        this.buttonImage.style.cursor = 'pointer';
         this.clickListener();
         this.draw();
         this.setWorld();
@@ -146,6 +145,7 @@ class World {
         this.ctx.translate(this.camera_x, 0);
     
         this.addToMap(this.character);
+        this.addToMap(this.endboss);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwBottle)
         this.ctx.translate(-this.camera_x, 0);
