@@ -63,6 +63,7 @@ class World {
         this.throwBottle.forEach((thrownBottle) => {
             if (this.endboss.isColliding(thrownBottle) && this.canBeHit) {
                 this.endboss.hit();
+                this.thrownBottle.hit();
                 this.canBeHit = false;
                 setTimeout(() => {
                     this.canBeHit = true;

@@ -75,6 +75,7 @@ class Endboss extends MovableObject {
     endbossIsHurt = false;
     speed = 4;
     winTimeout;
+    thrownBottle;
 
     /**
      * Creates an instance of Endboss and initializes its animations and position.

@@ -39,6 +39,10 @@ class ThrowBottle extends MovableObject {
                 this.playAnimation(this.images_splash);
                 this.bottleCollapse = false;
             }, 60);
+        } else if (this.energy === 0) {
+            this.playAnimation(this.images_splash);
+            this.speedY = 0;
+            this.x += 0;
         } else {
             this.speedY = 12;
             this.applyGravity();
