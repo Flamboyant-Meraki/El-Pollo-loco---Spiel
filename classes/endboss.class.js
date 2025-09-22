@@ -72,7 +72,6 @@ class Endboss extends MovableObject {
     energy = 60;
     world;
     endbossTriggered = false;
-    endbossIsHurt = false;
     speed = 4;
     winTimeout;
     thrownBottle;

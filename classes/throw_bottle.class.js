@@ -15,7 +15,7 @@ class ThrowBottle extends MovableObject {
         'assets/img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png'
     ];
 
-    static allThrownBottles = [];
+    // static allThrownBottles = [];
     energy = 20;
 
 
@@ -31,24 +31,22 @@ class ThrowBottle extends MovableObject {
         
     }
 
+    // Hier weiter
     throw() {
-        if (this.bottleCollapse) {
-            this.speedY = 0;
-            this.x = 0;
-            this.animationInterval = setInterval(() => {
+        setInterval(() => {
+            if (this.isHurt()) {
                 this.playAnimation(this.images_splash);
-                this.bottleCollapse = false;
-            }, 60);
-        } else if (this.energy === 0) {
-            this.playAnimation(this.images_splash);
-            this.speedY = 0;
-            this.x += 0;
-        } else {
-            this.speedY = 12;
+                this.speedY = 0;
+                this.x += 0;
+                console.log('bottlecrack');
+            }
+        }, 60);
+        if (!this.isHurt()) {
+            this.speedY = 14;
             this.applyGravity();
 
             this.throwInterval = setInterval(() => {
-                this.x += 10;
+                this.x += 12;
             }, 20);
 
             this.animationInterval = setInterval(() => {
