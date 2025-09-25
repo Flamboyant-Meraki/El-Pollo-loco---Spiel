@@ -16,7 +16,7 @@ class ThrowBottle extends MovableObject {
     ];
 
     // static allThrownBottles = [];
-    energy = 20;
+    splash = false;
 
 
     constructor(x, y){
@@ -28,30 +28,28 @@ class ThrowBottle extends MovableObject {
         this.width = 80;
         this.height = 70;
         this.throw();
-        
     }
 
-    // Hier weiter
     throw() {
-        setInterval(() => {
-            if (this.isHurt()) {
-                this.playAnimation(this.images_splash);
-                this.speedY = 0;
-                this.x += 0;
-                console.log('bottlecrack');
-            }
-        }, 60);
-        if (!this.isHurt()) {
-            this.speedY = 14;
-            this.applyGravity();
+        this.speedY = 14;
+        this.applyGravity();
 
-            this.throwInterval = setInterval(() => {
+        this.throwInterval = setInterval(() => {
+            if (!this.splash) {
                 this.x += 12;
-            }, 20);
+            } else {
+                this.x += 0;
+            }
+        }, 20);
 
-            this.animationInterval = setInterval(() => {
+        this.animationInterval = setInterval(() => {
+            if (!this.splash) {
                 this.playAnimation(this.images_throw);
-            }, 60);
-        }
+            } else {
+                this.playAnimation(this.images_splash);
+            }
+        console.log(this.splash);aa
+        
+        }, 60);
     }
 }
