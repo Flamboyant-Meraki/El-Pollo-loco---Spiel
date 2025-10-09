@@ -41,6 +41,7 @@ class World {
 
     checkCollisions(){
         this.collideWithEnemy();
+        this.collideWithBoss();
         this.collideWithCoin();
         this.collideWithBottle();
         this.bossCollideWithBottle();
@@ -59,14 +60,28 @@ class World {
         });
     }
 
+    collideWithBoss() {
+        this.level.endboss.forEach((endboss) => {
+            if (this.character.isColliding(endboss) && this.canBeHit) {
+                this.character.hit();
+                this.statusbar.setPercentage(this.character.energy);
+                this.canBeHit = false;
+                setTimeout(() => {
+                    this.canBeHit = true;
+                }, 1300);
+            }
+        });
+    }
+
     bossCollideWithBottle() {
         this.throwBottle.forEach((thrownBottle) => {
             if (this.endboss.isColliding(thrownBottle) && this.canBeHit) {
                 this.endboss.hit();
-                this.thrownBottle.hit();
+                this.thrownBottle.splash = true;
                 this.canBeHit = false;
                 setTimeout(() => {
                     this.canBeHit = true;
+                    this.thrownBottle.splash = false;
                 }, 800);
             }
         });

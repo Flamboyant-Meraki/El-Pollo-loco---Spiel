@@ -7,6 +7,9 @@ function createLevel1() {
         // new Chicken(),
         ],
         [
+        new Endboss()
+        ],
+        [
         new Cloud(),
         new Cloud()
         ],

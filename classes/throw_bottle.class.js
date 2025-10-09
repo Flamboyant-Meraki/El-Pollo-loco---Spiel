@@ -30,6 +30,7 @@ class ThrowBottle extends MovableObject {
         this.throw();
     }
 
+    // Throw fertigmachen & isHurt funktional machen
     throw() {
         this.speedY = 14;
         this.applyGravity();
@@ -40,6 +41,7 @@ class ThrowBottle extends MovableObject {
             } else {
                 this.x += 0;
             }
+            
         }, 20);
 
         this.animationInterval = setInterval(() => {
@@ -48,7 +50,7 @@ class ThrowBottle extends MovableObject {
             } else {
                 this.playAnimation(this.images_splash);
             }
-        console.log(this.splash);aa
+        console.log(this.splash);
         
         }, 60);
     }
